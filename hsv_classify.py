@@ -1,11 +1,13 @@
 from sklearn.cluster import KMeans
 from collections import Counter
-import cv2 #for resizing image
+import cv2 
 import numpy as np
 import argparse
 import json
 
-def get_dominant_color(image, k=4, image_processing_size = (50, 50)):
+# Code adjusted from Adam Spannbauer: https://adamspannbauer.github.io/2018/03/02/app-icon-dominant-colors/
+
+def get_dominant_color(image, k, image_processing_size = (50, 50)):
     """
     takes an image as input
     returns the dominant 3 colors of the image as three lists
@@ -14,17 +16,9 @@ def get_dominant_color(image, k=4, image_processing_size = (50, 50)):
     pixels & returning the centroid of the largest 3 clusters
 
     processing time is sped up by working with a smaller image; 
-    this resizing can be done with the image_processing_size param 
-    which takes a tuple of image dims as input
+    images is forced to be 50 x 50 below
 
-    get_dominant_color(my_image, k=4, image_processing_size = (25, 25))
-    [56.2423442, 34.0834233, 70.1234123]
     """
-    #resize image if new dims provided
-	#image = cv2.imread(image)
-    if image_processing_size is not None:
-        image = cv2.resize(image, image_processing_size, 
-                            interpolation = cv2.INTER_AREA)
     
     #reshape the image to be a list of pixels
     image = image.reshape((image.shape[0] * image.shape[1], 3))
@@ -53,17 +47,20 @@ args = vars(ap.parse_args())
 
 #read in image of interest
 bgr_image = cv2.imread(args['imagePath'])
+
 #convert to HSV; this is a better representation of how we see color
 hsv_image = cv2.cvtColor(bgr_image, cv2.COLOR_BGR2HSV)
     
 #extract 3 most dominant colors
 # (aka the centroid of the most popular k means cluster)
+# K-means set to 35 clusters. Given the complexity of our images. 
+# Change K-means below and the image processing size above to adjust accuracy
 dom_color_1, dom_color_2, dom_color_3 = get_dominant_color(hsv_image, k=35)
     
-#create a square showing dominant color of equal size to input image
-dom_color_1_hsv = np.full(bgr_image.shape, dom_color_1, dtype='uint8')
-#convert to bgr color space for display
-dom_color_1_rgb = cv2.cvtColor(dom_color_1_hsv, cv2.COLOR_HSV2RGB)
+#create a square showing dominant color of equal size to input image for testing
+#dom_color_1_hsv = np.full(bgr_image.shape, dom_color_1, dtype='uint8')
+#convert to bgr color space for display in testing
+#dom_color_1_rgb = cv2.cvtColor(dom_color_1_hsv, cv2.COLOR_HSV2RGB)
     
 #create a square showing dominant color of equal size to input image
 dom_color_2_hsv = np.full(bgr_image.shape, dom_color_2, dtype='uint8')
@@ -76,7 +73,7 @@ dom_color_3_hsv = np.full(bgr_image.shape, dom_color_3, dtype='uint8')
 dom_color_3_rgb = cv2.cvtColor(dom_color_3_hsv, cv2.COLOR_HSV2RGB)
     
 #concat input image and dom color square side by side for display
-output_image = np.hstack((bgr_image[:,:,::-1], dom_color_1_rgb, dom_color_2_rgb, dom_color_3_rgb))
+#output_image = np.hstack((bgr_image[:,:,::-1], dom_color_1_rgb, dom_color_2_rgb, dom_color_3_rgb))
 
 hex1 = '#%02x%02x%02x' % (dom_color_1_rgb[0][0][0], dom_color_1_rgb[0][0][1], dom_color_1_rgb[0][0][2])
 hex2 = '#%02x%02x%02x' % (dom_color_2_rgb[0][0][0], dom_color_2_rgb[0][0][1], dom_color_2_rgb[0][0][2])
