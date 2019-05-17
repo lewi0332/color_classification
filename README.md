@@ -1,6 +1,8 @@
 # color_classification
 Script to return top three dominant colors from an image. 
 
+Code revised from Adam Spannbauer's icon color sorting: https://adamspannbauer.github.io/2018/03/02/app-icon-dominant-colors/
+
 Input: 
  - image filepath
  
