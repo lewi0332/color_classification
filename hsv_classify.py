@@ -61,9 +61,9 @@ hsv_image = cv2.cvtColor(bgr_image, cv2.COLOR_BGR2HSV)
 dom_color_1, dom_color_2, dom_color_3 = get_dominant_color(hsv_image, k=35)
 
 # create a square showing dominant color of equal size to input image for testing
-#dom_color_1_hsv = np.full(bgr_image.shape, dom_color_1, dtype='uint8')
+dom_color_1_hsv = np.full(bgr_image.shape, dom_color_1, dtype='uint8')
 # convert to bgr color space for display in testing
-#dom_color_1_rgb = cv2.cvtColor(dom_color_1_hsv, cv2.COLOR_HSV2RGB)
+dom_color_1_rgb = cv2.cvtColor(dom_color_1_hsv, cv2.COLOR_HSV2RGB)
 
 # create a square showing dominant color of equal size to input image
 dom_color_2_hsv = np.full(bgr_image.shape, dom_color_2, dtype='uint8')
