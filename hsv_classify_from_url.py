@@ -10,7 +10,7 @@ import urllib
 # Code adjusted from Adam Spannbauer: https://adamspannbauer.github.io/2018/03/02/app-icon-dominant-colors/
 
 
-def get_dominant_color(image, k, image_processing_size=(50, 50)):
+def get_dominant_color(image, k, image_processing_size=(25, 25)):
     """
     takes an image as input
     returns the dominant 3 colors of the image as three lists
