@@ -1,9 +1,10 @@
-from sklearn.cluster import KMeans
-from collections import Counter
-import cv2
-import numpy as np
 import argparse
 import json
+from collections import Counter
+
+import cv2
+import numpy as np
+from sklearn.cluster import KMeans
 
 # Code adjusted from Adam Spannbauer: https://adamspannbauer.github.io/2018/03/02/app-icon-dominant-colors/
 
