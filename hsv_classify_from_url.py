@@ -61,7 +61,7 @@ hsv_image = cv2.cvtColor(bgr_image, cv2.COLOR_BGR2HSV)
 # (aka the centroid of the most popular k means cluster)
 # K-means set to 35 clusters. Given the complexity of our images.
 # Change K-means below and the image processing size above to adjust accuracy
-dom_color_1, dom_color_2, dom_color_3 = get_dominant_color(hsv_image, k=35)
+dom_color_1, dom_color_2, dom_color_3 = get_dominant_color(hsv_image, k=5)
 
 # create a square showing dominant color of equal size to input image for testing
 dom_color_1_hsv = np.full(bgr_image.shape, dom_color_1, dtype='uint8')
