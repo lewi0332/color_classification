@@ -5,6 +5,7 @@ Code revised from Adam Spannbauer's icon color sorting: https://adamspannbauer.g
 
 Input: 
  - image filepath
+ - image URL
  
 Output: 
  - json string with RGB and Hex for the most prominant colors: 
