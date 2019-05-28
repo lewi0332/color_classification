@@ -1,4 +1,4 @@
-import time
+#import time
 import argparse
 import json
 from collections import Counter
@@ -12,7 +12,7 @@ import urllib
 
 # >>>'python hsv_classify_from_url.py -i <image path> 
 
-start = time.time()
+#start = time.time()
 def get_dominant_color(image, k, image_processing_size=(50, 50)):
     """
     takes an image as input
@@ -116,4 +116,4 @@ color_dict = {'first_color': {'red': int(dom_color_1_rgb[0][0][0]), 'green': int
                               'hex': hex6}}
 
 print(json.dumps(color_dict))
-print('time: {:.3f}s'.format(time.time()-start))
+#print('time: {:.3f}s'.format(time.time()-start))
