@@ -19,3 +19,7 @@ Output:
 
 ![CH score](https://github.com/lewi0332/color_classification/blob/master/visuals/Unknown-1.png?raw=true)
 
+![KMeans 3d clusters](https://github.com/lewi0332/color_classification/blob/master/visuals/Unknown.png?raw=true)
+
+![example image with color samples](https://github.com/lewi0332/color_classification/blob/master/visuals/Unknown-2.png?raw=true)
+
