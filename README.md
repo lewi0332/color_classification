@@ -15,3 +15,7 @@ Output:
  
 {"first_color": {"red": 151, "green": 133, "blue": 123, "hex": "#97857b"}, "second_color": {"red": 138, "green": 133, "blue: ": 111, "hex": "#8a796f"}, "third_color": {"red": 166, "green": 133, "blue": 135, "hex": "#a69287"}}
 ```
+
+
+![CH score](https://github.com/lewi0332/color_classification/blob/master/visuals/Unknown-1.png?raw=true)
+
